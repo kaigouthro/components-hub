@@ -356,7 +356,7 @@ def get_downloads(package):
     return downloads
 
 
-# @st.experimental_memo(ttl=28 * 24 * 3600, show_spinner=False)
+@st.experimental_memo(ttl=28 * 24 * 3600, show_spinner=False)
 def get_components():
     components_dict = {}
 
