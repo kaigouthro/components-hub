@@ -388,7 +388,6 @@ def get_components():
             elif l.startswith("https://pypi.org"):
                 c.pypi = l
                 c.package = l.split("https://pypi.org/project/(.*?)/")[-1][:-1]
-        st.write(c.__dict__)
 
         if c.github and not c.package:
             repo_name = (
