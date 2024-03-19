@@ -379,7 +379,6 @@ def get_components():
 
         links  = [a.get("href") for a in li.find_all("a")]
         for l in links:
-            st.write(l)
             if l.startswith("https://github.com"):
                 c.github = l
             elif l.startswith("https://share.streamlit.io") or "streamlitapp.com" in l:
@@ -389,6 +388,7 @@ def get_components():
             elif l.startswith("https://pypi.org"):
                 c.pypi = l
                 c.package = re.match("https://pypi.org/project/(.*?)/", l).group(1)
+        st.write(c.__dict__)
 
         if c.github and not c.package:
             repo_name = (
