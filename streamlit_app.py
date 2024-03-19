@@ -387,7 +387,7 @@ def get_components():
                 c.forum_post = l
             elif l.startswith("https://pypi.org"):
                 c.pypi = l
-                c.package = re.match("https://pypi.org/project/(.*?)/", l).group(1)
+                c.package = l.split("https://pypi.org/project/(.*?)/")[-1][:-1]
         st.write(c.__dict__)
 
         if c.github and not c.package:
