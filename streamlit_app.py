@@ -149,10 +149,10 @@ icon("🎪")
 """
 
 description_text = """
-Discover {} Streamlit components! Most information on this page is 
-automatically crawled from Github, PyPI, and the 
+Discover {} Streamlit components! Most information on this page is
+automatically crawled from Github, PyPI, and the
 [Streamlit forum](https://discuss.streamlit.io/t/streamlit-components-community-tracker/4634).
-If you build your own [custom component](https://docs.streamlit.io/library/components/create), 
+If you build your own [custom component](https://docs.streamlit.io/library/components/create),
 it should appear here within a few days.
 """
 description = st.empty()
@@ -372,13 +372,14 @@ def get_components():
 
     for li in stqdm(lis, desc="🎈 Crawling Streamlit forum (step 1/5)"):
         c = Component()
-        name = re.sub("\(.*?\)", "", li.text)
+        name: str = re.sub("\(.*?\)", "", li.text)
         name = name.split(" – ")[0]
         name = name.strip()
         c.name = name
 
-        links = [a.get("href") for a in li.find_all("a")]
+        links  = [a.get("href") for a in li.find_all("a")]
         for l in links:
+            st.write(l)
             if l.startswith("https://github.com"):
                 c.github = l
             elif l.startswith("https://share.streamlit.io") or "streamlitapp.com" in l:
