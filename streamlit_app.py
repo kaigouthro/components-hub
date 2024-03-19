@@ -372,7 +372,7 @@ def get_components():
 
     for li in stqdm(lis, desc="🎈 Crawling Streamlit forum (step 1/5)"):
         c = Component()
-        name: str = re.sub("\(.*?\)", "", li.text)
+        name: str = re.sub(r"\(.*?\)", "", li.text)
         name = name.split(" – ")[0]
         name = name.strip()
         c.name = name
